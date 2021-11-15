@@ -50,6 +50,7 @@ import Contract = Truffle.Contract;
 
 //@ts-ignore
 import sourceMapSupport from 'source-map-support';
+import { IntString } from './EIP712/RelayData';
 //@ts-ignore
 sourceMapSupport.install({ errorFormatterForce: true });
 
@@ -785,9 +786,9 @@ export default class ContractInteractor {
     }
 
     // TODO: a way to make a relay hub transaction with a specified nonce without exposing the 'method' abstraction
-    async getRegisterRelayMethod(url: string): Promise<any> {
+    async getRegisterRelayMethod(baseRelayFee: IntString, pctRelayFee: number, url: string): Promise<any> {
         const hub = this.relayHubInstance;
-        return hub.contract.methods.registerRelayServer(url);
+        return hub.contract.methods.registerRelayServer(baseRelayFee, pctRelayFee, url);
     }
 
     async getAddRelayWorkersMethod(workers: string[]): Promise<any> {

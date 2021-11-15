@@ -234,6 +234,8 @@ export function isRegistrationValid(
             registerEvent.returnValues.relayManager,
             managerAddress
         ) &&
+        registerEvent.returnValues.baseRelayFee.toString() === config.baseRelayFee.toString() &&
+        registerEvent.returnValues.pctRelayFee.toString() === config.pctRelayFee.toString() &&
         registerEvent.returnValues.relayUrl.toString() ===
             config.url.toString() +
                 (!portIncluded && config.port > 0

@@ -34,6 +34,8 @@ export const DeployTransactionRequestShape = {
         },
         relayData: {
             gasPrice: ow.string,
+            pctRelayFee: ow.string,
+            baseRelayFee: ow.string,
             domainSeparator: ow.string,
             relayWorker: ow.string,
             callForwarder: ow.string,
